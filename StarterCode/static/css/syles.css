@@ -1,0 +1,14 @@
+body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.jumbotron {
+    background-color: lavender;
+    font-weight: bold;
+}
+
+footer {
+    background-color: lavender;
+    text-align: center;
+    font-size: large;
+}
