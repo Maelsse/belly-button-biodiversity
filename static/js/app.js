@@ -23,6 +23,8 @@ function updateMetadata(sample) {
         var metadata = data.metadata;
         var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
         var result = resultArray[0];
+        var washFreq = result.wfreq;
+        console.log(`check: ${washFreq}`);
         var PANEL = d3.select("#sample-metadata");
         PANEL.html("");
         Object.entries(result).forEach(([key, value]) => {
@@ -36,7 +38,6 @@ function buildPlots(sample) {
         var samples = data.samples;
         var resultArray = samples.filter(sampleObj => sampleObj.id == sample);
         var result = resultArray[0];
-        var washFreq = result.wfreq;
         var otu_ids = result.otu_ids;
         var otu_labels = result.otu_labels;
         var sample_values = result.sample_values;
@@ -77,6 +78,12 @@ function buildPlots(sample) {
         };
         Plotly.newPlot("bubble", bubbleData, bubbleLayout);
 
+        // WFREQ FILTERING 
+        var metadata = data.metadata;
+        var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
+        var result = resultArray[0];
+        var washFreq = result.wfreq;
+
         var gaugeData = [
             {
                 domain: {x: [0, 1], y: [0, 1] },
@@ -87,7 +94,7 @@ function buildPlots(sample) {
                 title: 'Belly Button Washing Frequency <br> Scrubs per Week',
                 gauge: {
                     bar: {color: 'white'},
-                    axis: {range: [null, 9]},
+                    axis: {range: [null, 10]},
                     bgcolor: 'darkorchid'},
             }
         ];
