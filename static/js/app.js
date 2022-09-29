@@ -36,6 +36,7 @@ function buildPlots(sample) {
         var samples = data.samples;
         var resultArray = samples.filter(sampleObj => sampleObj.id == sample);
         var result = resultArray[0];
+        var washFreq = result.wfreq;
         var otu_ids = result.otu_ids;
         var otu_labels = result.otu_labels;
         var sample_values = result.sample_values;
@@ -75,9 +76,6 @@ function buildPlots(sample) {
             margin: { t: 30 }
         };
         Plotly.newPlot("bubble", bubbleData, bubbleLayout);
-
-        var washFreq = result.wfreq;
-        console.log(washFreq);
 
         var gaugeData = [
             {
